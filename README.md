@@ -19,6 +19,3 @@ Requisitos previos: Necesitas tener Python instalado en tu sistema.
 3. Ejecuta la aplicacin haciendo doble clic en el archivo proporcionado `Launch YouTube Converter.bat` o desde la terminal ejecutando `python app.py`.
 4. La aplicacin web se abrir automticamente (por defecto en `http://localhost:5000`).
 5. Pega la URL del video y descarga.
-
-## 🏷️ Etiquetas (SEO)
-`youtube downloader` `yt-dlp gui` `youtube to mp3` `youtube to mp4` `flask downloader` `video converter`
