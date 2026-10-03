@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3/Audio Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-youtube"></i> YT to Audio/Video</h1>
+            <p>Premium Media Converter</p>
+        </header>
+
+        <main>
+            <div class="converter-box">
+                <div class="input-group">
+                    <input type="text" id="urlInput" placeholder="Paste YouTube Link Here..." autocomplete="off">
+                    <i class="fas fa-link input-icon"></i>
+                </div>
+
+                <div class="format-selection">
+                    <label class="radio-container">
+                        <input type="radio" name="format" value="mp3" checked>
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label"><i class="fas fa-music"></i> Audio (MP3)</span>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="format" value="mp4">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label"><i class="fas fa-video"></i> Video (MP4)</span>
+                    </label>
+                </div>
+
+                <button id="convertBtn" onclick="convertVideo()">
+                    <span>Convert Now</span>
+                    <i class="fas fa-bolt"></i>
+                </button>
+            </div>
+
+            <div id="statusArea" class="status-area hidden">
+                <div class="loader hidden" id="loader">
+                    <div class="spinner"></div>
+                    <p>Processing video...</p>
+                </div>
+
+                <div id="result" class="result hidden">
+                    <div class="video-info">
+                        <i class="fas fa-file-video"></i>
+                        <span id="videoTitle">Video Title</span>
+                    </div>
+                    <a id="downloadLink" href="#" class="download-btn">
+                        Download File <i class="fas fa-download"></i>
+                    </a>
+                </div>
+
+                <div id="error" class="error hidden">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorMsg">Error message</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Designed for Speed & Quality</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
