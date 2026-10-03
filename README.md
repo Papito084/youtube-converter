@@ -24,60 +24,11 @@ youtube-converter/
 └── README.md
 `
 
-## 🔌 Endpoints de la API
-
-### POST /convert
-Inicia el flujo de trabajo de resolución y conversión.
-- **Request:** {"url": "https://youtube.com/watch?v=...", "format": "mp3"} (o mp4)
-- **Response (200 OK):** {"message": "Conversion successful", "filename": "uuid-video.mp3", "title": "Video Title"}
-- **Response (400/500):** Excepciones capturadas y propagadas con detalle del error.
-
-### GET /download/<filename>
-Expone el archivo estático procesado al cliente.
-- **Response:** Binario del archivo transcodificado con cabeceras HTTP Content-Disposition: attachment.
-
-## ⚙️ Configuración del Entorno
-`ash
-# 1. Crear entorno virtual aislado
-python -m venv venv
-venv\Scripts\activate  # o 'source venv/bin/activate' en sistemas UNIX
-
-# 2. Instalar dependencias mediante PIP
-pip install -r requirements.txt
-
-# 3. Inicializar el servidor WSGI de desarrollo
-python app.py
-`
-"@
-    },
-    @{
-        Path = "C:\Users\alexr\OneDrive\Documentos\Codigo\HTML-to-PDF"
-        Content = @"
-# HTML to PDF Converter
-
-Herramienta profesional de renderizado en el navegador que convierte documentos web (HTML/CSS) en archivos PDF rasterizados, manteniendo la fidelidad visual, la inyección de estilos y el layout en formato estandarizado.
-
-## 🏗️ Arquitectura y Funcionamiento Interno
-- **Renderizado del DOM Virtual:** 
-  - La aplicación hace uso de html2canvas para analizar recursivamente el árbol DOM (Document Object Model) y aplicar algoritmos de renderizado de CSS que clonan la estructura visual sobre un lienzo (<canvas>).
-- **Codificación a Formato Documento (PDF):** 
-  - A través de jsPDF, se instancia un motor de generación de documentos portátiles que captura la data-URI generada en el Canvas, escalando y paginando el contenido para adaptarlo automáticamente a la resolución de una página A4.
-- **Aislamiento y Seguridad (Zero-Trust):** 
-  - Al utilizar la FileReader API y buffers en memoria del navegador, todo el ciclo de vida de la conversión ocurre en un hilo local del cliente. El código fuente nunca pasa por un backend centralizado, eliminando riesgos de intercepción de datos confidenciales (Man-in-the-Middle).
-
-## 📂 Estructura del Proyecto
-`plaintext
-html-to-pdf/
-├── index.html          # Interfaz de usuario e importación de librerías CDN
-├── app.js              # Manejador de eventos y lógica de parseo PDF
-├── styles.css          # Variables CSS (Custom Properties) y Responsive Grid
-├── icon.png            # Iconografía nativa HQ (Transparencia Alpha)
-├── icon.ico            # Formato de binario de icono multipropósito
-├── make_shortcut.ps1   # Script PowerShell de instalación de escritorio
-└── README.md
-`
-
-## ⚙️ Uso y Despliegue
-- Clonar el repositorio localmente.
-- Arquitectura descentralizada: no necesita Node.js ni Webpack. Solo se requiere iniciar index.html en un navegador.
-- Los módulos están desacoplados, permitiendo que la lógica de conversión en pp.js sea escalable a otros pipelines (React/Vue/Angular) si el proyecto crece.
+1. Clona el repositorio.
+2. Instala las dependencias necesarias abriendo una terminal en la carpeta:
+   ```bash
+   pip install flask yt-dlp imageio-ffmpeg
+   ```
+3. Ejecuta la aplicacin haciendo doble clic en el archivo proporcionado `Launch YouTube Converter.bat` o desde la terminal ejecutando `python app.py`.
+4. La aplicacin web se abrir automticamente (por defecto en `http://localhost:5000`).
+5. Pega la URL del video y descarga.
